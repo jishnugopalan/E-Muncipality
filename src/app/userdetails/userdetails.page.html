@@ -1,0 +1,61 @@
+
+ 
+<ion-content class="ion-padding" color="primary">
+<div id="container">
+<ion-card>
+ 
+<ion-card-header>
+          
+          <ion-card-title>Register Now</ion-card-title>
+  </ion-card-header>
+  <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
+   <ion-card>
+     <ion-item>
+  <ion-label>District</ion-label>
+  <ion-select formControlName="district" [(ngModel)]="dis" (ionChange)="getMun(dis)">
+    <ion-select-option *ngFor="let d of district" value="{{d.district}}">{{d.district}}</ion-select-option>
+    
+  </ion-select>
+</ion-item>
+</ion-card>
+   <ion-card>
+     <ion-item>
+  <ion-label>Muncipality</ion-label>
+  <ion-select formControlName="muncipalityid" [(ngModel)]="Mun">
+    <ion-select-option *ngFor="let d of mun" value="{{d._id}}">{{d.muncipality}}</ion-select-option>
+    
+  </ion-select>
+</ion-item>
+</ion-card>
+<ion-card>
+      <ion-item>
+        <ion-label position="floating">Ward Number</ion-label>
+        <ion-input formControlName="wardnumber" inputmode="tel"></ion-input>
+      </ion-item>
+      
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">House Number</ion-label>
+        <ion-input formControlName="housenumber" inputmode="tel"></ion-input>
+      </ion-item>
+      
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Adhaar Number</ion-label>
+        <ion-input formControlName="adhaarnumber" inputmode="tel"></ion-input>
+      </ion-item>
+      
+    </ion-card>
+    
+    
+    
+
+    <!--<ion-button expand="full" type="submit" [disabled]="!credentialsForm.valid">Login</ion-button>-->
+    <ion-button expand="block" type="button" (click)="register()" [disabled]="!credentialsForm.valid">Register</ion-button>
+ <ion-text routerLink="/login" color="primary"><center><h4>Already have an account</h4></center></ion-text>
+  </form>
+  </ion-card>
+  </div>
+</ion-content>

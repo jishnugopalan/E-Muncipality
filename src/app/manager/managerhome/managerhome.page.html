@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title><ion-icon name="home"></ion-icon>Home</ion-title>
+ 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngFor="let c of mun">
+<center><ion-text color="danger"><h1>E-Muncipality App</h1></ion-text></center>
+<ion-item>
+<center>
+
+<h3>Manager of {{c.muncipality}} Muncipality {{c.district}}</h3>
+
+</center>
+ 
+</ion-item>
+
+
+</ion-content>

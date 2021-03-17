@@ -1,0 +1,105 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay" *ngIf="user">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>
+          
+          <ion-avatar>
+           <img src="{{profile_pic}}" onError="src = '../../assets/img/profile.png'">
+           </ion-avatar>
+          {{name}}</ion-list-header>
+          <ion-note>{{a}}</ion-note>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+            
+          </ion-menu-toggle>
+           
+        </ion-list>
+
+        <ion-list id="labels-list">
+         
+
+          <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+<!--admin menu-->
+    <ion-menu contentId="main-content" type="overlay" *ngIf="admin">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>
+           <ion-avatar *ngIf="empty">
+           <img src="../assets/img/profile.png">
+          </ion-avatar>
+          <ion-avatar *ngIf="pic">
+           <img src="{{profile_pic}}">
+           </ion-avatar>
+          Admin Pannel</ion-list-header>
+          <ion-note>{{a}}</ion-note>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of adminPages; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+            
+          </ion-menu-toggle>
+           
+        </ion-list>
+
+        <ion-list id="labels-list">
+         
+
+          <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <!--manager menu-->
+    <ion-menu contentId="main-content" type="overlay" *ngIf="manager">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>
+           <ion-avatar *ngIf="empty">
+           <img src="../assets/img/profile.png">
+          </ion-avatar>
+          <ion-avatar *ngIf="pic">
+           <img src="{{profile_pic}}">
+           </ion-avatar>
+         {{name}}</ion-list-header>
+          <ion-note>{{a}}</ion-note>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of managerPages; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+            
+          </ion-menu-toggle>
+           
+        </ion-list>
+
+        <ion-list id="labels-list">
+         
+
+          <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>My Muncipality</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card *ngFor="let c of mdetails">
+<ion-item>
+<h3>Muncipality Details</h3><br>
+</ion-item>
+<ion-item>
+{{c.muncipality}}<br>
+District:{{c.district}}<br>
+Contact number:{{c.contact_number}}<br>
+</ion-item>
+<ion-card>
+<ion-item>
+
+<h3>My Details</h3>
+</ion-item>
+<ion-item>
+House number:{{c.user[0].housenumber}}<br>
+Ward number:{{c.user[0].wardnumber}}<br>
+Adhaar number:{{c.user[0].adhaarnumber}}<br>
+District number:{{c.user[0].district}}
+
+
+</ion-item>
+</ion-card>
+</ion-card>
+</ion-content>

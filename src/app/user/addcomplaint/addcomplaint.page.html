@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    
+    <ion-title>Add Complaint</ion-title>
+    
+ 
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+<ion-card>
+<ion-item>
+    <ion-label>Complaint type</ion-label>
+     <ion-select [(ngModel)]="ctype">
+      <ion-select-option value="private">Private</ion-select-option>
+      <ion-select-option value="public">Public</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+<ion-item>
+
+  <ion-label position="floating">Type your complaints</ion-label>
+  <ion-textarea [(ngModel)]="cmp"></ion-textarea>
+  
+</ion-item>
+<ion-item>
+          <ion-label  color="primary" stacked>Upload the document</ion-label>
+          <input type="file" (change)="encodeImageFileAsURL($event)" id="inputFileToLoad">
+        </ion-item>
+<ion-item>
+<ion-button (click)="add()">Submit</ion-button>
+</ion-item>
+
+</ion-card>
+</ion-content>

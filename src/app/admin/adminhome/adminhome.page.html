@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title><ion-icon name="home"></ion-icon>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <center><ion-text color="danger"><h1>Admin Pannel<br>E-Muncipality App</h1></ion-text></center>
+<ion-item>View Rgistered Muncipality</ion-item>
+  <ion-card>
+     <ion-item>
+  <ion-label>Select District</ion-label>
+  <ion-select [(ngModel)]="dis" (ionChange)="getMun(dis)">
+    <ion-select-option *ngFor="let d of district" value="{{d.district}}">{{d.district}}</ion-select-option>
+    
+  </ion-select>
+</ion-item>
+</ion-card>
+<ion-card *ngFor="let d of mun">
+<ion-item>{{d.muncipality}}</ion-item>
+<ion-item>{{d.contact_number}}</ion-item>
+<ion-item>{{d.email}}</ion-item>
+
+</ion-card>
+</ion-content>

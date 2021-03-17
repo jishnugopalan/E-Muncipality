@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    
+    <ion-title><ion-icon name="home"></ion-icon>Home</ion-title>
+    
+ 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<!--div id="container">
+ <ion-card>
+ <ion-card-header>
+ <center><ion-text color="danger"><h1>E-Muncipality App</h1></ion-text></center>
+ </ion-card-header>
+ <ion-item>
+ Connecting to your Muncipality
+            <ion-icon name="people" color="primary"></ion-icon>
+
+ </ion-item>
+ <ion-item>
+ Send your complaints online in a click
+            <ion-icon name="add" color="primary"></ion-icon>
+ 
+ </ion-item>
+ <ion-item>
+ Add your common problems and discuss with your nearest people
+            <ion-icon name="reader" color="primary"></ion-icon>
+
+ </ion-item>
+ </ion-card>
+
+</div>-->
+<ion-card *ngFor="let c of cmp">
+<ion-item>
+ <ion-avatar>
+           <img src="{{c.userdetails[0].profile_pic}}"  onError="src = '../../assets/img/profile.png'">
+          
+           </ion-avatar>
+            <ion-label> {{c.userdetails[0].name}}</ion-label>
+
+</ion-item>
+<ion-item *ngIf="c.media!='empty'">
+<img src="{{c.media}}">
+</ion-item>
+<ion-item>
+<p>{{c.complaint}}</p>
+</ion-item>
+<ion-item>
+<br>{{c.datetime | date:'dd/MM/yyyy'}} at 
+{{c.datetime | date:'HH:mm a'}} 
+</ion-item>
+<ion-item>
+<ion-button (click)="addSolution(c._id)">Add a comment</ion-button>
+</ion-item>
+</ion-card>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="primary">
+          <ion-icon md="caret-up"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+          
+         
+          <ion-fab-button color="light" (click)="logout()">
+            <ion-icon name="log-out"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button color="light" routerLink="/settings">
+            <ion-icon name="settings"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button color="light" routerLink="/viewpubliccomplaint">
+            <ion-icon name="reader"></ion-icon>
+          </ion-fab-button>
+           <ion-fab-button color="light" routerLink="/addcomplaint">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+</ion-content>

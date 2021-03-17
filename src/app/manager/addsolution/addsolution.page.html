@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>Add Solution</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card *ngFor="let c of cmp">
+<ion-item>
+ <ion-avatar>
+           <img src="{{c.userdetails[0].profile_pic}}"  onError="src = '../../assets/img/profile.png'">
+          
+           </ion-avatar>
+            <ion-label> {{c.userdetails[0].name}}</ion-label>
+
+</ion-item>
+<ion-item *ngIf="c.media!='empty'">
+<img src="{{c.media}}">
+</ion-item>
+<ion-item>
+<p>{{c.complaint}}</p>
+</ion-item>
+<ion-item>
+<br>{{c.datetime | date:'dd/MM/yyyy'}} at 
+{{c.datetime | date:'HH:mm a'}} 
+</ion-item>
+<ion-item>
+  <ion-textarea placeholder="Enter solution here" [(ngModel)]="sol"></ion-textarea>
+</ion-item>
+<ion-item>
+  <ion-button (click)="add(c.userdetails[0]._id)">Add</ion-button>
+</ion-item>
+</ion-card>
+</ion-content>
